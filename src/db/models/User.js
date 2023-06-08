@@ -38,13 +38,6 @@ const UserSchema = mongoose.Schema(
         count: 0,
       },
     },
-
-    notifications: {
-      type: Array,
-      default: [],
-    },
-
-    orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
   },
   { minimize: false }
 );
@@ -80,10 +73,6 @@ UserSchema.pre("save", function (next) {
       next();
     });
   });
-});
-
-UserSchema.pre("remove", function (next) {
-  this.model("Order").remove({ owner: this._id }, next);
 });
 
 const User = mongoose.model("User", UserSchema);
