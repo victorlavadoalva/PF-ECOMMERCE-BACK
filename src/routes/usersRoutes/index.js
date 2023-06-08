@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const getHandlerUser = require("./handlers/getHandlerUsers");
+const getHandlerUsers = require("./handlers/getHandlerUsers");
+const postHandlerUsers = require("./handlers/postHandlerUsers");
 
 const api = Router();
 
-api.get("/", getHandlerUser);
-// api.post("/", postHandlerUser);
+api.get("/", getHandlerUsers);
+api.post("/", postHandlerUsers);
 
 module.exports = api;
