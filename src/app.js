@@ -6,6 +6,7 @@ const routes = require("./routes/index");
 
 const server = express();
 
+console.log("test");
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
