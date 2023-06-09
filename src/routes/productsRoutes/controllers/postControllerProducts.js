@@ -7,7 +7,8 @@ const postControllerProducts = async (data) => {
         description: data.description,
         price: data.price,
         category: data.category,
-        pictures: data.pictures
+        pictures: data.pictures,
+        stock: data.stock
     }
     const productCreated = await products.create(newProductData);
 
