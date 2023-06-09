@@ -17,14 +17,18 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: [true, "can't be blank"],
     },
+    gender: {
+      type: String,
+      default: "Sin genero",
+    },
     pictures: {
       type: Array,
       required: true,
     },
-    stock:{
+    stock: {
       type: Number,
-      require: true
-    }
+      require: true,
+    },
   },
   { minimize: false }
 );
