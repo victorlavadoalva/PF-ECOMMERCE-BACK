@@ -4,6 +4,8 @@ const postHandlerUsers = require("./handlers/postHandlerUsers");
 const deleteHandlerUsers = require("./handlers/deleteHandlerUsers");
 const getIdHandlerUsers = require("./handlers/getIdHandlerUsers");
 const putHandlerUsers = require("./handlers/putHandlerUsers");
+const signupHandlerUsers = require("./handlers/signupHandlerUsers");
+const loginHandlerUsers = require("./handlers/loginHandlerUsers");
 
 const api = Router();
 
@@ -21,5 +23,11 @@ api.put("/:id", putHandlerUsers);
 
 // ? Ruta DELETE para productos
 api.delete("/:id", deleteHandlerUsers);
+
+// Ruta para sign up
+api.post("/signup", signupHandlerUsers);
+
+// Ruta para login
+api.post("/login", loginHandlerUsers);
 
 module.exports = api;
