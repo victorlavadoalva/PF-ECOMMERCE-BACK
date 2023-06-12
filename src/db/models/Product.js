@@ -13,10 +13,6 @@ const ProductSchema = mongoose.Schema(
       type: Number,
       required: [true, "can't be blank"],
     },
-    type: {
-      type: String,
-      default: "Sin tipo",
-    },
     category: {
       type: String,
       required: [true, "can't be blank"],
