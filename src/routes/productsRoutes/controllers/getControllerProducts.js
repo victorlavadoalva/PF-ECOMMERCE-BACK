@@ -26,7 +26,7 @@ const getControllerProducts = async (name) => {
         description: product.description,
         price: product.price,
         category: product.category,
-        gender: product.gender,
+        platform: product.platform,
         pictures: product.pictures,
         stock: product.stock || 0,
       };
