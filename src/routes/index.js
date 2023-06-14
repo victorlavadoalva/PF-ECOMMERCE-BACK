@@ -12,19 +12,17 @@ router.use("/users", usersRoutes);
 router.use("/orders", ordersRoutes);
 // router.use("/admin", adminRoutes);
 router.post("/create-payment", async (req, res) => {
-  const { amount } = req.body;
-  console.log(amount);
+  let { amount } = req.body;
+  amount *= 100;
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: "usd",
       payment_method_types: ["card"],
     });
-    console.log("paymentIntent");
-    console.log(paymentIntent);
     res.status(200).json(paymentIntent);
   } catch (e) {
-    console.log(e.message);
+    console.log(e);
     res.status(400).json(e.message);
   }
 });
