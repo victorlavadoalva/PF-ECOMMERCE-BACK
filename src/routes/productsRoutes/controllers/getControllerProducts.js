@@ -25,8 +25,8 @@ const getControllerProducts = async (name) => {
         name: product.name,
         description: product.description,
         price: product.price,
-        type: product.type,
         category: product.category,
+        platform: product.platform,
         pictures: product.pictures,
         stock: product.stock || 0,
       };
@@ -36,4 +36,51 @@ const getControllerProducts = async (name) => {
   }
 };
 
-module.exports = getControllerProducts;
+const filterCategoryFunction = (data, filterCategory) => {
+  const categoriesForFilter = filterCategory.toLowerCase().split("-")
+
+  const productFilter = data.filter((product) => {
+    for(let i = 0; i < categoriesForFilter.length; i++){
+      if(product.category.toLowerCase() == categoriesForFilter[i]) return true
+    }
+    return false;
+  });
+  return productFilter;
+}
+
+const filterPlatformFunction = (data, filterPlatform) => {
+  const platformsForFilter = filterPlatform.toLowerCase().split("-");
+
+  const productFilter = data.filter((product) => {
+    for(let i = 0; i < platformsForFilter.length; i++){
+      if(product.platform.toLowerCase() == platformsForFilter[i]) return true
+    }
+    return false;
+  });
+
+  return productFilter;
+
+};
+
+const filterPriceFunction = (data, filterPrice) => {
+
+  const arrNumbers = filterPrice.split("-");
+
+  const minPrice = parseFloat(arrNumbers[0]);
+  const maxPrice = parseFloat(arrNumbers[1]);
+
+
+  const filteredProducts = data.filter((product) => {
+    const productPrice = product.price;
+    return productPrice >= minPrice && productPrice <= maxPrice;
+  });
+
+  return filteredProducts;
+}
+
+module.exports = {
+  getControllerProducts,
+  filterCategoryFunction,
+  filterPlatformFunction,
+  filterPriceFunction
+};

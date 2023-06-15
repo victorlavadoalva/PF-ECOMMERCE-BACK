@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const ProductSchema = mongoose.Schema(
   {
     name: {
@@ -9,19 +10,20 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: [true, "can't be blank"],
     },
+    valorations: [
+      {
+        type: Schema.Types.Mixed,
+      },
+    ],
     price: {
       type: Number,
       required: [true, "can't be blank"],
-    },
-    type: {
-      type: String,
-      default: "Sin tipo",
     },
     category: {
       type: String,
       required: [true, "can't be blank"],
     },
-    gender: {
+    platform: {
       type: String,
       default: "Sin genero",
     },
