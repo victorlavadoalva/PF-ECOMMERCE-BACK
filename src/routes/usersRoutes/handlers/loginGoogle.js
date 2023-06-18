@@ -2,7 +2,7 @@ const verifyToken = require("../controllers/googleVerifyToken");
 const loginControllerUsersGoogle = require("../controllers/findUserGoogle");
 
 const checkGoogleEmailHandler = async (req, res) => {
-  const authorizationHeader = req.headers.authorization;
+  // const authorizationHeader = req.headers.authorization;
   console.log("!!!!!!!!!!TOKEN", authorizationHeader);
   if (!authorizationHeader) {
     return res.status(400).json({ message: "Falta Token" });

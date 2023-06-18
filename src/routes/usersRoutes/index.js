@@ -7,7 +7,7 @@ const putHandlerUsers = require("./handlers/putHandlerUsers");
 const signupHandlerUsers = require("./handlers/signupHandlerUsers");
 const loginHandlerUsers = require("./handlers/loginHandlerUsers");
 const getIdOrdersHandlerUsers = require("./handlers/getIdOrdersHandlerUsers");
-const checkGoogleEmailHandler = require("./handlers/loginGoogle")
+// const checkGoogleEmailHandler = require("./handlers/loginGoogle");
 const api = Router();
 
 // ? Ruta GET para Users
@@ -34,6 +34,6 @@ api.post("/signup", signupHandlerUsers);
 api.post("/login", loginHandlerUsers);
 
 //Ruta de Google
-api.post("/check-google-email", checkGoogleEmailHandler);
+// api.post("/check-google-email", checkGoogleEmailHandler);
 
 module.exports = api;
