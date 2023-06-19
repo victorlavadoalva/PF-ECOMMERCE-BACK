@@ -4,9 +4,9 @@ const clientId = process.env.GOOGLE_CLIENT_ID;
 const client = new OAuth2Client(clientId);
 
 
-async function verifyToken(token) {
-    
-  const ticket = await client.verifyIdToken({
+async function verifyToken(token ) {
+    try {
+      const ticket = await client.verifyIdToken({
       idToken: token,
       audience: clientId,  // Specify the CLIENT_ID of the app that accesses the backend
       // Or, if multiple clients access the backend:
@@ -17,7 +17,10 @@ async function verifyToken(token) {
   // If request specified a G Suite domain:
   // const domain = payload['hd'];
   return payload
+    } catch (error) {
+      console.error('Error al verificar el ID Token:', error);
+      throw new Error("Error al verificar el ID token");
+    }
 }
-verifyToken().catch(console.error);
 
 module.exports = verifyToken;
