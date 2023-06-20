@@ -9,13 +9,9 @@ const api = Router();
 //posteando/creando la orden
 api.post("/", async (req, res) => {
   const { userId, cart, country, address, paymentStatus } = req.body;
-  console.log("llegoal post orders");
 
-  console.log(cart, "cart");
-  console.log(cart.total);
   try {
     const user = await User.findById(userId);
-    console.log(user.email);
     const order = await Order.create({
       owner: user._id,
       products: cart,
@@ -30,7 +26,6 @@ api.post("/", async (req, res) => {
     user.orders.push(order);
     user.markModified("orders");
     await user.save();
-    console.log("llego antes de notif correo");
     //notificacion a correo:
     await transporter.sendMail({
       from: '"Purchase succesfull 👻" <victorlavado15@gmail.com>', // sender address
@@ -50,7 +45,6 @@ api.post("/", async (req, res) => {
     <p>The Team at Our Store</p>
           `, // html body
     });
-    console.log("envio correo");
 
     res.status(200).json(user);
   } catch (e) {
