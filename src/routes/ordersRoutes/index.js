@@ -6,7 +6,7 @@ const api = Router();
 
 //posteando/creando la orden
 api.post("/", async (req, res) => {
-  const { userId, cart, country, address } = req.body;
+  const { userId, cart, country, address, paymentStatus } = req.body;
   try {
     const user = await User.findById(userId);
     console.log(user);
@@ -15,7 +15,9 @@ api.post("/", async (req, res) => {
       products: cart,
       country,
       address,
+      status: paymentStatus,
     });
+    console.log("ordeR:", order);
     order.count = cart.count;
     order.total = cart.total;
     await order.save();
