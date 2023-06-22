@@ -22,10 +22,10 @@ api.post("/", postHandlerUsers);
 
 api.get("/:id/orders", getIdOrdersHandlerUsers);
 
-// ? Ruta PUT para Productos
+// ? Ruta PUT para Users
 api.put("/:id", putHandlerUsers);
 
-// ? Ruta DELETE para productos
+// ? Ruta DELETE para Users
 api.delete("/:id", deleteHandlerUsers);
 
 // Ruta para sign up
