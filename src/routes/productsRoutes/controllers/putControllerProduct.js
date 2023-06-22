@@ -1,4 +1,4 @@
-const products = require("../../../db/models/Product");
+const Product = require("../../../db/models/Product");
 const parseID = require("../../../../utils/parseID");
 
 const putControllerProduct = async (id, data) => {
@@ -8,7 +8,7 @@ const putControllerProduct = async (id, data) => {
 
     const idParsed = parseID(id);
 
-    const dataModify = await products.findByIdAndUpdate(idParsed,{
+    const dataModify = await Product.findByIdAndUpdate(idParsed,{
         name: data.name,
         description: data.description,
         price: data.price,
@@ -21,4 +21,31 @@ const putControllerProduct = async (id, data) => {
 
 };
 
-module.exports = putControllerProduct;
+
+const putValorations = async(id, data) => {
+    if(!id) throw new Error("Enter an id");
+    if(!data) throw new Error("Enter valoration to add");
+
+    const idParsed = parseID(id);
+
+    const valoration = {
+        id_cliente: parseID(data.id_cliente),
+        comment: data.comment,
+        rating: Number(data.rating),
+        date: Date(data.date)
+    };
+
+    const dataModify = await Product.findByIdAndUpdate(
+        idParsed,
+        {
+            $addToSet:{valorations:valoration}
+        },
+    ).exec();
+
+    return dataModify;
+}
+
+module.exports = {
+    putControllerProduct,
+    putValorations
+};
