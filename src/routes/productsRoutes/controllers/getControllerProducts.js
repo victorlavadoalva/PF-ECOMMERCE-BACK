@@ -29,6 +29,7 @@ const getControllerProducts = async (name) => {
         platform: product.platform,
         pictures: product.pictures,
         stock: product.stock || 0,
+        valorations: product.valorations
       };
     });
 

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const ProductSchema = mongoose.Schema(
   {
     name: {
@@ -12,8 +13,23 @@ const ProductSchema = mongoose.Schema(
     },
     valorations: [
       {
-        type: Schema.Types.Mixed,
-      },
+        id_cliente: {
+          type: Schema.Types.ObjectId,
+          ref: 'User',
+          required: true
+        },
+        comment: {
+          type: String,
+        },
+        rating: {
+          type: Number,
+          required: true
+        },
+        date: {
+          type: Date,
+          default: Date.now
+        }
+      }
     ],
     price: {
       type: Number,
