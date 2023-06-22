@@ -1,5 +1,6 @@
 const signupControllerUsers = require("../controllers/signupControllerUsers");
 // const transporter = require("../../../config/mailer");
+
 const transporter = require("../../../config/mailer");
 
 const signupHandlerUsers = async (req, res) => {
@@ -23,10 +24,13 @@ const signupHandlerUsers = async (req, res) => {
     });
 
     res.status(200).json(signUp);
-  } catch (e) {
-    if (e.code === 11000)
-      return res.status(400).send("Email existente, use otro correo");
-    res.status(400).send(e.message);
+  } catch (error) {
+    console.log(error);
+    if (error.EmailExist) {
+      return res.status(400).json({Error:"Email"})
+    }else if(error.NameExist){
+      return res.status(400).json({Error:"Name"})
+    }else return res.status(500).json({message: error.message})
   }
 };
 
