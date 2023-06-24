@@ -34,16 +34,29 @@ api.post("/", async (req, res) => {
       subject: "Purchase succesfull", // Subject line
       // text: "Hello world?", // plain text body
       html: `
-          <h1>Purchase succesfull</h1>
-      <p>Dear User,</p>
-      <p>Thank you for shopping with us. Your purchase has been successful.</p>
-      <h2>Total Order:</h2>
-      <ul>
-      ${cart.total}
-    </ul>
-    <p>For any questions or concerns, please contact our customer support.</p>
-    <p>Best regards,</p>
-    <p>The Team at Our Store</p>
+      <html>
+      <body style="font-family: Arial, sans-serif; background-color: #f5f5f5; margin: 0; padding: 0;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+          <div style="background-color: #003366; text-align: center; padding: 20px;">
+            <img src="https://us.123rf.com/450wm/asmati/asmati1704/asmati170401816/75904360-muestra-de-bolsas-de-compras-vector-icono-negro-plano-en-c%C3%ADrculo-blanco-con-sombra-en-el-fondo.jpg" alt="Logo" style="max-width: 150px;">
+          </div>
+          <div style="background-color: #ffffff; padding: 20px;">
+            <h1 style="color: #333; text-align: center;">Purchase Confirmation</h1>
+            <p style="color: #666;">Dear User,</p>
+            <p style="color: #666;">Thank you for your purchase! We are delighted to inform you that your order has been successfully processed.</p>
+      
+            <p style="color: #666;">Total amount: ${cart.total}</p>
+            <p style="color: #666;">You will receive a separate email with the shipping details soon.</p>
+            <p style="color: #666;">If you have any questions or need further assistance, please don't hesitate to contact our customer support.</p>
+            <p style="color: #666;">Best regards,</p>
+            <p style="color: #666;">The Team at Our Platform</p>
+          </div>
+          <div style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+            <p>© 2023 Our Platform. All rights reserved.</p>
+          </div>
+        </div>
+      </body>
+    </html>
           `, // html body
     });
 

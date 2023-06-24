@@ -11,7 +11,28 @@ const getIdOrdersHandlerUsers = require("./handlers/getIdOrdersHandlerUsers");
 const checkGoogleEmailHandler = require("./handlers/loginGoogle");
 const api = Router();
 
-// ? Ruta GET para Users
+/**
+ * @openapi
+ * /users:
+ *   get:
+ *     tags:
+ *       - User
+ *     responses:
+ *       200:
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: OK
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ */
 api.get("/", getHandlerUsers);
 
 // ? Ruta GET por id para Users
