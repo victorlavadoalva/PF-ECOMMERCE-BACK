@@ -43,6 +43,52 @@ const UserSchema = mongoose.Schema(
   { minimize: false }
 );
 
+// Anotaciones para la especificación OpenAPI
+UserSchema.virtual("id").get(function () {
+  return this._id.toHexString();
+});
+
+UserSchema.set("toJSON", {
+  virtuals: true,
+});
+
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *           readOnly: true
+ *           example: 61dbae02-c147-4e28-863c-db7bd402b2d6
+ *         name:
+ *           type: string
+ *           example: John Doe
+ *         email:
+ *           type: string
+ *           example: johndoe@example.com
+ *         isAdmin:
+ *           type: boolean
+ *           example: false
+ *         cart:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: number
+ *               example: 100
+ *             count:
+ *               type: number
+ *               example: 3
+ *         orders:
+ *           type: array
+ *           items:
+ *             type: string
+ *             format: uuid
+ *             example: 61dbae02-c147-4e28-863c-db7bd402b2d6
+ */
+
 UserSchema.statics.findByCredentials = async function (email, password) {
   const user = await User.findOne({ email });
   if (!user) throw new Error("invalid credentials");
