@@ -1,13 +1,13 @@
 const { Router } = require("express");
+const getHandlerAdmin = require('./handlers/getHandlerAdmin');
+const putHandlerAdmin = require('./handlers/putHandlerAdmin')
 // const verifyToken = require('../../utils/jwt')
-// const getHandlerAdmin = require('./handlers/getHandlerAdmin')
-// const putHandlerAdmin = require('./handlers/putHandlerAdmin')
 
 const api = Router();
 
-api.get("/", verifyToken, getHandlerAdmin);
+api.get("/", getHandlerAdmin);
 
-api.put("/:id", verifyToken, putHandlerAdmin);
+api.put("/:id", putHandlerAdmin);
 
 
 module.exports = api;
