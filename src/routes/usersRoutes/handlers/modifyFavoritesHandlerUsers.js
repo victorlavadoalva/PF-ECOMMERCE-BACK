@@ -7,6 +7,7 @@ const modifyFavoritesHandler = async (req, res) => {
     const user = await modifyFavoritesController(userId, favorites, type);
     res.status(202).json(user);
   } catch (error) {
+    console.log(error)
     res.status(400).json({ err: error.message });
   }
 };

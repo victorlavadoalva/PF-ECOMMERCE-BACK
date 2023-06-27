@@ -10,7 +10,9 @@ const modifyFavoritesController = async (userId, favorites, type) => {
       (product) => product._id !== favorites._id
     )
   }
-  
+  if (!user.profilePicture) {
+    user.profilePicture = "url"; 
+  }
   await user.save();
   return user;
 };
