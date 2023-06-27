@@ -38,6 +38,11 @@ const UserSchema = mongoose.Schema(
         count: 0,
       },
     },
+
+    myFavorites: {
+      type: [],
+      default: [],
+    },
     orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
   },
   { minimize: false }
