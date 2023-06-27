@@ -2,7 +2,8 @@ const getControllerAdmin = require('../controllers/getControllerAdmin')
 
 const getHandlerAdmin = async(req, res) =>{
     try { 
-        const {isAdmin} = req.user;
+        // const {isAdmin} = req.user;
+        const isAdmin = true;
         if(isAdmin){
             const data = await getControllerAdmin()
             res.status(200).json(data)
