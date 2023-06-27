@@ -4,10 +4,10 @@ const signupControllerUsers = require("../controllers/signupControllerUsers");
 const transporter = require("../../../config/mailer");
 
 const signupHandlerUsers = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, picture } = req.body;
 
   try {
-    const signUp = await signupControllerUsers(name, email, password);
+    const signUp = await signupControllerUsers(name, email, password, picture);
 
     await transporter.sendMail({
       from: '"Register succesfull 👻" <victorlavado15@gmail.com>', // sender address
