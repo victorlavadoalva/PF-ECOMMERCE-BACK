@@ -31,12 +31,27 @@ const UserSchema = mongoose.Schema(
       default: false,
     },
 
+    profilePicture: {
+      type: String,
+      required: [true, "is required"],
+    },
+
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+
     cart: {
       type: Object,
       default: {
         total: 0,
         count: 0,
       },
+    },
+
+    myFavorites: {
+      type: [],
+      default: [],
     },
     orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
   },
