@@ -47,6 +47,10 @@ const ProductSchema = mongoose.Schema(
       type: Array,
       required: true,
     },
+    isActive: {
+      type: Boolean,
+      default:true
+    },
     stock: {
       type: Number,
       require: true,
