@@ -45,7 +45,22 @@ const putValorations = async(id, data) => {
     return dataModify;
 }
 
+const putStock = async (id, cant) => {
+    const product = await Product.findById(id);
+    const productStock = product.stock;
+
+    if(productStock > 0){
+        product.stock -= cant;
+        product.markModified("stock");
+        await product.save();
+    }
+
+    return product;
+
+}
+
 module.exports = {
     putControllerProduct,
-    putValorations
+    putValorations,
+    putStock
 };
