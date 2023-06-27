@@ -31,14 +31,14 @@ const UserSchema = mongoose.Schema(
       default: false,
     },
 
-
     profilePicture: {
       type: String,
       required: [true, "is required"],
+    },
 
     isActive: {
       type: Boolean,
-      default:true
+      default: true,
     },
 
     cart: {
