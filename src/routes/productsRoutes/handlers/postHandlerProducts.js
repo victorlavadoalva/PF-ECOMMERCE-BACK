@@ -9,5 +9,5 @@ const postHandlerProducts = async (req, res) => {
     res.status(400).json({ err: error.message });
   }
 };
-
+ 
 module.exports = postHandlerProducts;
