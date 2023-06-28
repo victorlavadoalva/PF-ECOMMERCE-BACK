@@ -58,9 +58,38 @@ const putStock = async (id, cant) => {
     return product;
 
 }
-
+const putEditValoration = async (id, data) => {
+    if (!id) throw new Error("Enter an id");
+    if (!data) throw new Error("Enter valoration to add");
+  
+    const idParsed = parseID(id);
+    const id_cliente = parseID(data.id_cliente);
+    const edit = {
+      id_cliente: id_cliente,
+      comment: data.comment,
+      rating: Number(data.rating),
+      date: Date(data.date)
+    };
+ 
+    const dataDelete = await Product.findOneAndUpdate(
+        { _id: idParsed },
+        { $pull: { valorations: { id_cliente: id_cliente } } },
+        { new: true }
+    );
+    const dataAdd = await Product.findOneAndUpdate(
+        idParsed,
+        {
+          $addToSet: { valorations: edit }
+        },
+        { new: true }
+      );
+  
+    return dataAdd;
+  };
+  
 module.exports = {
     putControllerProduct,
     putValorations,
-    putStock
+    putStock,
+    putEditValoration
 };

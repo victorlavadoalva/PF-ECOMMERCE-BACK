@@ -1,16 +1,22 @@
-const {putControllerProduct, putValorations, putStock} = require("../controllers/putControllerProduct");
+const {putControllerProduct, putValorations, putStock, putEditValoration} = require("../controllers/putControllerProduct");
 
 const putHandlerProduct = async (req, res) => {
     try {
         const { id } = req.params;
         const dataModify = req.body;
+        
         let indicador;
         let productModified;
         for(bandera in dataModify){
             if(bandera == 'valorations'){
+                
                 indicador = await putValorations(id,dataModify.valorations)
             }else if(bandera == 'stock'){
+               
                 indicador = await putStock(id, dataModify.stock);
+            }else if(bandera == "edit"){
+               
+                indicador = await putEditValoration(id, dataModify.edit)
             }
         }
 
