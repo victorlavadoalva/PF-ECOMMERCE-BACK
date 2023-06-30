@@ -18,14 +18,14 @@ const generateRandomPassword = () => {
 };
 
 
-const loginControllerUsersGoogle = async ({email,name}) => {
+const loginControllerUsersGoogle = async ({email,name, picture}) => {
   console.log(email);
   const user = await User.findOne({ email });
 
   if (!user) {
     // Si el usuario no existe en la base de datos, crea uno nuevo con una contraseña aleatoria
     const randomPassword = generateRandomPassword();
-    const userCreate = await User.create({ name,email, password: randomPassword });
+    const userCreate = await User.create({ name,email, password: randomPassword, profilePicture: picture});
     return userCreate
   }
 

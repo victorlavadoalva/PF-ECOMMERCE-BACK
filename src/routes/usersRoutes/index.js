@@ -9,6 +9,7 @@ const signupHandlerUsers = require("./handlers/signupHandlerUsers");
 const loginHandlerUsers = require("./handlers/loginHandlerUsers");
 const getIdOrdersHandlerUsers = require("./handlers/getIdOrdersHandlerUsers");
 const checkGoogleEmailHandler = require("./handlers/loginGoogle");
+const modifyFavoritesHandler = require("./handlers/modifyFavoritesHandlerUsers");
 const api = Router();
 
 /**
@@ -57,5 +58,9 @@ api.post("/login", loginHandlerUsers);
 
 //Ruta de Google
 api.post("/check-google-email", checkGoogleEmailHandler);
+
+//Ruta para modificar favoritos de usuarios
+api.post("/update-favorites", modifyFavoritesHandler);
+
 
 module.exports = api;
