@@ -67,7 +67,7 @@ api.post("/", async (req, res) => {
 });
 
 // Obteniendo todas las ordenes;
-api.get("/", verifyToken, async (req, res) => {
+api.get("/", async (req, res) => {
   try {
     const orders = await Order.find().populate("owner", ["email", "name"]);
     res.status(200).json(orders);
