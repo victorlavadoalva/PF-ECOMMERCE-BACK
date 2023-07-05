@@ -68,26 +68,26 @@ api.post("/", async (req, res) => {
 
 // Obteniendo todas las ordenes;
 api.get("/", async (req, res) => {
- const {id}= req.query
- console.log(id);
- if(id) {
-  const orders = await Order.find({owner:id})
-  const filteredProperties = orders.map(order => {
-    const keys = Object.keys(order.products);
-    return keys.filter(key => key !== "count" && key !== "total");
-  });
-  
-  res.status(200).json(filteredProperties.flat())
- }else {
-  try {
-    const orders = await Order.find().populate("owner", ["email", "name"]);
-    res.status(200).json(orders);
-  } catch (e) {
-    res.status(400).json(e.message);
-  }
- }
-  
-});
+  const { id } = req.query;
+  console.log(id);
+  if (id) {
+    const orders = await Order.find({ owner: id });
+    const filteredProperties = orders.map((order) => {
+      const keys = Object.keys(order.products);
+      return keys.filter((key) => key !== "count" && key !== "total");
+    });
 
+    const uniqueItems = [...new Set(filteredProperties.flat())];
+
+    res.status(200).json(uniqueItems);
+  } else {
+    try {
+      const orders = await Order.find().populate("owner", ["email", "name"]);
+      res.status(200).json(orders);
+    } catch (e) {
+      res.status(400).json(e.message);
+    }
+  }
+});
 
 module.exports = api;
