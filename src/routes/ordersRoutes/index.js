@@ -45,7 +45,7 @@ api.post("/", async (req, res) => {
             <p style="color: #666;">Dear User,</p>
             <p style="color: #666;">Thank you for your purchase! We are delighted to inform you that your order has been successfully processed.</p>
       
-            <p style="color: #666;">Total amount: ${cart.total}</p>
+            <p style="color: #666;">Total amount: ${cart.total.toFixed(2)}</p>
             <p style="color: #666;">You will receive a separate email with the shipping details soon.</p>
             <p style="color: #666;">If you have any questions or need further assistance, please don't hesitate to contact our customer support.</p>
             <p style="color: #666;">Best regards,</p>
