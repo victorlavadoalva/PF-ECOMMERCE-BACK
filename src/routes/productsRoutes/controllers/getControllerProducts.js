@@ -27,9 +27,9 @@ const getControllerProducts = async (name) => {
         price: product.price,
         category: product.category,
         platform: product.platform,
-        pictures: product.pictures,
+        // pictures: product.pictures,
         stock: product.stock || 0,
-        valorations: product.valorations
+        valorations: product.valorations,
       };
     });
 
@@ -38,38 +38,35 @@ const getControllerProducts = async (name) => {
 };
 
 const filterCategoryFunction = (data, filterCategory) => {
-  const categoriesForFilter = filterCategory.toLowerCase().split("-")
+  const categoriesForFilter = filterCategory.toLowerCase().split("-");
 
   const productFilter = data.filter((product) => {
-    for(let i = 0; i < categoriesForFilter.length; i++){
-      if(product.category.toLowerCase() == categoriesForFilter[i]) return true
+    for (let i = 0; i < categoriesForFilter.length; i++) {
+      if (product.category.toLowerCase() == categoriesForFilter[i]) return true;
     }
     return false;
   });
   return productFilter;
-}
+};
 
 const filterPlatformFunction = (data, filterPlatform) => {
   const platformsForFilter = filterPlatform.toLowerCase().split("-");
 
   const productFilter = data.filter((product) => {
-    for(let i = 0; i < platformsForFilter.length; i++){
-      if(product.platform.toLowerCase() == platformsForFilter[i]) return true
+    for (let i = 0; i < platformsForFilter.length; i++) {
+      if (product.platform.toLowerCase() == platformsForFilter[i]) return true;
     }
     return false;
   });
 
   return productFilter;
-
 };
 
 const filterPriceFunction = (data, filterPrice) => {
-
   const arrNumbers = filterPrice.split("-");
 
   const minPrice = parseFloat(arrNumbers[0]);
   const maxPrice = parseFloat(arrNumbers[1]);
-
 
   const filteredProducts = data.filter((product) => {
     const productPrice = product.price;
@@ -77,11 +74,11 @@ const filterPriceFunction = (data, filterPrice) => {
   });
 
   return filteredProducts;
-}
+};
 
 module.exports = {
   getControllerProducts,
   filterCategoryFunction,
   filterPlatformFunction,
-  filterPriceFunction
+  filterPriceFunction,
 };

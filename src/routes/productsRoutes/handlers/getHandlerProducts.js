@@ -1,21 +1,25 @@
-const {getControllerProducts, filterCategoryFunction, filterPlatformFunction, filterPriceFunction} = require("../controllers/getControllerProducts");
+const {
+  getControllerProducts,
+  filterCategoryFunction,
+  filterPlatformFunction,
+  filterPriceFunction,
+} = require("../controllers/getControllerProducts");
 const { categories } = require("../../../../utils/categryPlatform");
 
 const getHandlerProducts = async (req, res) => {
   const { name, filterCategory, filterPlatform, filterPrice } = req.query;
 
   try {
-
     let productsData = await getControllerProducts(name);
 
-    if(filterCategory){
+    if (filterCategory) {
       productsData = filterCategoryFunction(productsData, filterCategory);
     }
-    if(filterPlatform){
+    if (filterPlatform) {
       productsData = filterPlatformFunction(productsData, filterPlatform);
     }
-    if(filterPrice){
-      productsData = filterPriceFunction(productsData, filterPrice)
+    if (filterPrice) {
+      productsData = filterPriceFunction(productsData, filterPrice);
     }
 
     res.status(200).json(productsData);

@@ -7,8 +7,7 @@ const postControllerProducts = async (data) => {
     !data.price ||
     !data.category ||
     !data.platform ||
-    !data.stock ||
-    !data.pictures.length
+    !data.stock
   )
     throw new Error("Missing data to post a product");
   const newProductData = {
@@ -18,7 +17,6 @@ const postControllerProducts = async (data) => {
     category: data.category,
     platform: data.platform,
     stock: data.stock,
-    pictures: data.pictures.map((picture) => picture.url),
   };
   const productCreated = await products.create(newProductData);
 
@@ -29,7 +27,6 @@ const postControllerProducts = async (data) => {
     platform: productCreated.platform,
     category: productCreated.category,
     stock: productCreated.stock,
-    pictures: productCreated.pictures,
     __v: 0,
   };
 

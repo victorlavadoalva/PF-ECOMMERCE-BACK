@@ -1,5 +1,4 @@
 const { Router } = require("express");
-const jwt = require("jsonwebtoken");
 const getHandlerUsers = require("./handlers/getHandlerUsers");
 const postHandlerUsers = require("./handlers/postHandlerUsers");
 const deleteHandlerUsers = require("./handlers/deleteHandlerUsers");
@@ -8,7 +7,6 @@ const putHandlerUsers = require("./handlers/putHandlerUsers");
 const signupHandlerUsers = require("./handlers/signupHandlerUsers");
 const loginHandlerUsers = require("./handlers/loginHandlerUsers");
 const getIdOrdersHandlerUsers = require("./handlers/getIdOrdersHandlerUsers");
-const checkGoogleEmailHandler = require("./handlers/loginGoogle");
 const modifyFavoritesHandler = require("./handlers/modifyFavoritesHandlerUsers");
 const api = Router();
 
@@ -56,11 +54,7 @@ api.post("/signup", signupHandlerUsers);
 // Ruta para login
 api.post("/login", loginHandlerUsers);
 
-//Ruta de Google
-api.post("/check-google-email", checkGoogleEmailHandler);
-
 //Ruta para modificar favoritos de usuarios
 api.post("/update-favorites", modifyFavoritesHandler);
-
 
 module.exports = api;
