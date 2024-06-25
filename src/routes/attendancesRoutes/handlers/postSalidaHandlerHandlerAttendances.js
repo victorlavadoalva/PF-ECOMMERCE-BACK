@@ -1,4 +1,4 @@
-const postSalidaControllerAttendances = require("../../controllers/attendance/postSalidaController");
+const postSalidaControllerAttendances = require("../controllers/postSalidaControllerAttendances");
 
 const postSalidaHandlerHandlerAttendances = async (req, res) => {
   const { usuarioId } = req.body;

@@ -1,4 +1,4 @@
-const Attendance = require("../../models/Attendance");
+const Attendance = require("../../../db/models/Attendance");
 
 const postSalidaControllerAttendances = async (usuarioId) => {
   const today = new Date();
